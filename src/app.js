@@ -19,7 +19,7 @@ import userRouter from "./routes/user.routes.js"
 
 app.use("/",userRouter)
 
-// http://localhost:3000/api/v1/users/registers
+// http://localhost:3000/registers
 
 
 
