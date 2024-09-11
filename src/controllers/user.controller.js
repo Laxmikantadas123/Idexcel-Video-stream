@@ -4,21 +4,21 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
-// const generateAccessTokenAndgenerateRefreshToken = async (userId) => {
-//   try {
-//     const user = User.findById(userId);
-//     const accessToken = user.generateAccessToken();
-//     const refreshToken = user.generateRefreshToken();
-//     user.refreshToken = refreshToken;
-//     await user.save({ validateBeforeSave: false });
-//     return {accessToken,refreshToken}
-//   } catch (error) {
-//     throw new ApiError(
-//       500,
-//       "somthing went wrong while generating refresh and access token",
-//     );
-//   }
-// };
+const generateAccessTokenAndgenerateRefreshToken = async (userId) => {
+  try {
+    const user = User.findById(userId);
+    const accessToken = user.generateAccessToken();
+    const refreshToken = user.generateRefreshToken();
+    user.refreshToken = refreshToken;
+    await user.save({ validateBeforeSave: false });
+    return {accessToken,refreshToken}
+  } catch (error) {
+    throw new ApiError(
+      500,
+      "somthing went wrong while generating refresh and access token",
+    );
+  }
+};
 // ------------------------registerUser------------------
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -55,7 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
       password,
       username:username.toLowerCase()
     })
-    
+ 
 });
 
 export { registerUser };
